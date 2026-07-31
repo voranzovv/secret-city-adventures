@@ -52,7 +52,7 @@ export default function AvatarScreen() {
 
   const handleNext = async () => {
     await setAvatar(avatarId);
-    router.push("/auth/TestPage");
+    router.push("/auth/name");
   };
 
   return (
