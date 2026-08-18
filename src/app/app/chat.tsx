@@ -1,16 +1,15 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
-    FlatList,
-    Pressable,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
+  FlatList,
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
 } from "react-native";
 
-// TODO: replace with real active-group check from global state
 const HAS_ACTIVE_GROUP = false;
 
 const INITIAL_MESSAGES = [
@@ -20,8 +19,8 @@ const INITIAL_MESSAGES = [
     text: "Perfect! What theme did we end up booking again?",
     self: false,
   },
-  { id: "2", sender: "Maya S", text: "The Haunted Laboratory.", self: false },
-  { id: "3", sender: "You", text: "Excited to meet you guys IRL!", self: true },
+  { id: "2", sender: "Maya S", text: "The Haunted labs.", self: false },
+  { id: "3", sender: "You", text: "Excited to meet you guys !", self: true },
 ];
 
 function EmptyChat() {
@@ -36,7 +35,7 @@ function EmptyChat() {
         </Text>
         <View style={styles.divider} />
         <Pressable
-          onPress={() => router.push("/app/join")}
+          // onPress={() => router.push("/app/join")}
           style={({ pressed }) => [
             styles.findGroupBtn,
             pressed && styles.pressed,
@@ -68,7 +67,7 @@ export default function ChatScreen() {
     <SafeAreaView style={styles.screen}>
       <View style={styles.header}>
         <View style={styles.headerThumb} />
-        <Text style={styles.countdown}>🟡 34hr 14min</Text>
+        <Text style={styles.countdown}>34hr 14min</Text>
       </View>
 
       <FlatList

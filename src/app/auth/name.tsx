@@ -1,19 +1,28 @@
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { ArrowRight, Shuffle } from "lucide-react-native";
 import { useState } from "react";
-import {
-    Pressable,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
-} from "react-native";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { SvgXml } from "react-native-svg";
 
-const RANDOM_NAMES = ["Wren Dusk", "Ash Marlow", "Sable Fox", "Rowan Vale"];
+const RANDOM_NAMES = [
+  "Voran",
+  "Vaishnav",
+  "Megha",
+  "Maya",
+  "Theo",
+  "Luna",
+  "Nova",
+  "Kai",
+  "Zara",
+  "Leo",
+];
 
 export default function NameScreen() {
   const router = useRouter();
+  const { avatar } = useLocalSearchParams<{
+    avatar: string;
+  }>();
   const [name, setName] = useState("");
 
   const handleRandom = () => {
@@ -21,9 +30,8 @@ export default function NameScreen() {
   };
 
   const handleFinish = () => {
-    // compute a display name and persist later
-    // TODO: persist name.trim() || RANDOM_NAMES[0] to AsyncStorage / global state here
     router.push("/app/explore");
+    // router.push("/auth/login");
   };
 
   return (
@@ -43,7 +51,10 @@ export default function NameScreen() {
 
       {/* Avatar preview */}
       <View style={styles.previewWrap}>
-        <View style={styles.avatarCircle} />
+        <View style={styles.avatarCircle}>
+          <SvgXml xml={avatar} />
+          <View />
+        </View>
       </View>
 
       {/* Name input */}

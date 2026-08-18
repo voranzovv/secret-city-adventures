@@ -3,9 +3,20 @@ import { Tabs } from "expo-router";
 
 export default function AppLayout() {
   return (
-    <Tabs screenOptions={{ headerShown: false }}>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: "#F2B01E",
+        tabBarInactiveTintColor: "#8A8A85",
+        tabBarStyle: {
+          backgroundColor: "#1C1C1C",
+          borderTopColor: "#2E2E2E",
+        },
+      }}
+    >
+      {/* 1. Show Explore */}
       <Tabs.Screen
-        name="explore"
+        name="explore copy"
         options={{
           title: "Explore",
           tabBarIcon: ({ color, size }) => (
@@ -13,6 +24,8 @@ export default function AppLayout() {
           ),
         }}
       />
+
+      {/* 2. Show Profile */}
       <Tabs.Screen
         name="profile"
         options={{
@@ -20,6 +33,37 @@ export default function AppLayout() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="person-outline" size={size} color={color} />
           ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="index"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="explore"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="viewGroup"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="community"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="chat"
+        options={{
+          href: null,
         }}
       />
     </Tabs>

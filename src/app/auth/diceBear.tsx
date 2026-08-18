@@ -3,7 +3,8 @@ import { createAvatar } from "@dicebear/core";
 import { useRouter } from "expo-router";
 import { ArrowRight, RefreshCw } from "lucide-react-native";
 import { useState } from "react";
-import { Pressable, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { SvgXml } from "react-native-svg";
 
 function generateAvatar(seed: string) {
@@ -28,8 +29,12 @@ export default function AvatarScreen() {
   };
 
   const handleContinue = () => {
-    // TODO: persist seed to AsyncStorage / global state here
-    router.push("../auth/name");
+    router.push({
+      pathname: "../auth/name",
+      params: {
+        avatar: avatarSvg,
+      },
+    });
   };
 
   return (
@@ -75,6 +80,7 @@ export default function AvatarScreen() {
   );
 }
 
+const ACCENT_COLOR = "#F2B01E";
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
@@ -87,7 +93,7 @@ const styles = StyleSheet.create({
   stepLabel: {
     fontSize: 12,
     fontWeight: "600",
-    color: "#F2B01E",
+    color: ACCENT_COLOR,
     textTransform: "uppercase",
     letterSpacing: 1,
     marginBottom: 8,
@@ -95,7 +101,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: "700",
-    color: "#F2B01E",
+    color: ACCENT_COLOR,
     textAlign: "center",
   },
   subtitle: {
@@ -143,7 +149,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#F2B01E",
+    backgroundColor: ACCENT_COLOR,
     paddingVertical: 16,
     borderRadius: 16,
   },
